@@ -206,53 +206,82 @@
     }
     .about-text .hosts strong { color: #c05621; }
 
-    /* ── Topics Section ── */
-    .topics {
+    /* ── Schedule Section ── */
+    .schedule {
       padding: 100px 0;
       background: #fff;
     }
-    .topics-header {
+    .schedule-header {
       text-align: center;
       max-width: 600px;
       margin: 0 auto 60px;
     }
-    .topics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    .schedule-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .schedule-item {
+      display: flex;
       gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
     }
-    .topic-card {
-      background: #faf8f5;
-      border-radius: 12px;
-      padding: 28px;
-      display: flex; gap: 16px;
-      align-items: flex-start;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #eee;
-    }
-    .topic-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    }
-    .topic-card .topic-icon {
+    .schedule-item:last-child { border-bottom: none; }
+    .schedule-time {
       flex-shrink: 0;
-      width: 48px; height: 48px;
-      background: linear-gradient(135deg, #f6a623, #c05621);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      color: #fff;
+      width: 110px;
+      font-weight: 700;
+      color: #c05621;
+      font-size: 0.95rem;
+      padding-top: 2px;
     }
-    .topic-card h3 {
+    .schedule-content h3 {
       font-size: 1.05rem;
       font-weight: 700;
       color: #1a1a1a;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .topic-card p {
+    .schedule-content p {
       font-size: 0.9rem;
       color: #666;
       line-height: 1.5;
+    }
+    .schedule-content .speaker {
+      font-style: italic;
+      color: #888;
+      font-size: 0.85rem;
+    }
+    .stations-divider {
+      background: linear-gradient(135deg, #f6a623, #c05621);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 24px 0 8px;
+    }
+    .station-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .station-item:last-child { border-bottom: none; }
+    .station-item h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .station-item p {
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .station-item .station-time {
+      color: #c05621;
+      font-weight: 600;
+      font-size: 0.85rem;
     }
 
     /* ── Image Break ── */
@@ -347,7 +376,8 @@
       .about-grid { grid-template-columns: 1fr; gap: 32px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       nav ul { display: none; }
-      .topics-grid { grid-template-columns: 1fr; }
+      .schedule-item { flex-direction: column; gap: 4px; }
+      .schedule-time { width: auto; }
       .hero-details { flex-direction: column; align-items: center; gap: 16px; }
     }
     @media (max-width: 480px) {
@@ -367,7 +397,7 @@
     </div>
     <ul>
       <li><a href="#about">About</a></li>
-      <li><a href="#topics">Topics</a></li>
+      <li><a href="#topics">Schedule</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#register">Attend</a></li>
     </ul>
@@ -386,7 +416,7 @@
         <div class="icon">&#128197;</div>
         <div>
           <strong>Saturday, April 25</strong><br>
-          9:00 AM &ndash; 1:00 PM
+          8:30 AM &ndash; 12:30 PM
         </div>
       </div>
       <div class="hero-detail">
@@ -397,9 +427,9 @@
         </div>
       </div>
       <div class="hero-detail">
-        <div class="icon">&#128682;</div>
+        <div class="icon">&#9749;</div>
         <div>
-          <strong>Doors Open</strong><br>
+          <strong>Check-In &amp; Coffee</strong><br>
           8:30 AM
         </div>
       </div>
@@ -461,88 +491,92 @@
           prepared, this workshop has something for you.
         </p>
         <p>
-          No registration is required &mdash; just show up! Doors open at
-          8:30 AM, with presentations running from 9:00 AM to 1:00 PM.
+          No registration is required &mdash; just show up! Check-in and
+          welcome coffee at 8:30 AM, with presentations running from
+          9:00 AM to 12:30 PM.
         </p>
         <div class="hosts">
-          Hosted by the <strong>Gunnison Conservation District</strong> and the
-          <strong>Colorado State University Extension Office</strong>
+          Hosted by the <strong>Gunnison Conservation District</strong> and
+          <strong>Colorado State University Extension &mdash; Gunnison County</strong>.
+          Sponsored by the <strong>Upper Gunnison River Water Conservancy District</strong>.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Topics ── -->
-<section class="topics" id="topics">
+<!-- ── Schedule ── -->
+<section class="schedule" id="topics">
   <div class="container">
-    <div class="topics-header">
-      <div class="section-label">Workshop Highlights</div>
-      <h2 class="section-title">What You'll Learn</h2>
+    <div class="schedule-header">
+      <div class="section-label">Event Schedule</div>
+      <h2 class="section-title">Workshop Agenda</h2>
     </div>
-    <div class="topics-grid">
-      <div class="topic-card">
-        <div class="topic-icon">&#9888;&#65039;</div>
-        <div>
-          <h3>Why Mitigation Matters</h3>
-          <p>Understanding wildfire risk and the critical role of defensible space in protecting homes and communities.</p>
+    <div class="schedule-list">
+      <div class="schedule-item">
+        <div class="schedule-time">8:30 a.m.</div>
+        <div class="schedule-content">
+          <h3>Check-In and Welcome Coffee</h3>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#127806;</div>
-        <div>
-          <h3>Land Management &amp; Burning Practices</h3>
-          <p>Best practices for managing ranchlands through strategic burning and vegetation management.</p>
+      <div class="schedule-item">
+        <div class="schedule-time">9:00 a.m.</div>
+        <div class="schedule-content">
+          <h3>Opening Remarks &amp; Workshop Overview</h3>
+          <p class="speaker">CSU Extension Agent and GCD Representative</p>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#128300;</div>
-        <div>
-          <h3>Mitigation Benefits &amp; Wildfire Science</h3>
-          <p>The science behind wildfire behavior and how mitigation efforts make a measurable difference.</p>
+      <div class="schedule-item">
+        <div class="schedule-time">9:15 a.m.</div>
+        <div class="schedule-content">
+          <h3>Keynote: How Mitigation Works</h3>
+          <p>Wildfire risk, fuels management &amp; defensible space</p>
+          <p class="speaker">Mike Tarantino, Colorado State Forest Service</p>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#127968;</div>
-        <div>
-          <h3>Defensible Space &amp; Fuels Management</h3>
-          <p>Hands-on guidance for creating and maintaining defensible space around your structures.</p>
+      <div class="schedule-item">
+        <div class="schedule-time">9:45 a.m.</div>
+        <div class="schedule-content">
+          <h3>Land Management and Burning Practices for Ranchlands</h3>
+          <p class="speaker">Retta Bruegger, Regional Specialist for Range Management, CSU Extension</p>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#129683;</div>
-        <div>
-          <h3>Chipping &amp; Slash Disposal</h3>
-          <p>Local resources and techniques for disposing of brush, slash, and other fire fuels effectively.</p>
+      <div class="schedule-item">
+        <div class="schedule-time">10:15 a.m.</div>
+        <div class="schedule-content">
+          <h3>Q&amp;A Session</h3>
         </div>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#9881;&#65039;</div>
-        <div>
-          <h3>Chainsaw Safety</h3>
-          <p>Essential safety practices for operating chainsaws during fuel reduction and fire mitigation work.</p>
-        </div>
+
+      <div class="stations-divider">Stations &amp; Presentations &bull; 10:30 a.m. &ndash; 12:30 p.m.</div>
+
+      <div class="station-item">
+        <h4>Mitigation Benefits &amp; Wildfire Science</h4>
+        <p>Cold Harbour, 8th Grade Students, WCU</p>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#128293;</div>
-        <div>
-          <h3>Prescribed Fires</h3>
-          <p>Field and pile burning techniques used by professionals to reduce wildfire fuel loads.</p>
-        </div>
+      <div class="station-item">
+        <h4>Defensible Space and Fuels Management Mitigation</h4>
+        <p>West Region Wildfire Council</p>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#127807;</div>
-        <div>
-          <h3>Firewise Landscaping</h3>
-          <p>Fire-resistant plant selection and landscaping strategies that reduce your home's wildfire vulnerability.</p>
-        </div>
+      <div class="station-item">
+        <h4>Chipping &amp; Slash Disposal</h4>
+        <p>Colorado State Forest Service &bull; <span class="station-time">11:00 a.m. presentation</span></p>
       </div>
-      <div class="topic-card">
-        <div class="topic-icon">&#128203;</div>
-        <div>
-          <h3>Evacuation &amp; Protection Plans</h3>
-          <p>Understanding the Community Wildfire Protection Plan (CWPP) and preparing your family's evacuation plan.</p>
-        </div>
+      <div class="station-item">
+        <h4>Chainsaw Safety</h4>
+        <p>U.S. Forest Service &bull; <span class="station-time">11:30 a.m. presentation</span></p>
+      </div>
+      <div class="station-item">
+        <h4>Restrictions, Prescribed Fire (Field &amp; Pile Burning)</h4>
+        <p>Dept. of Fire Prevention and Control, Gunnison Fire Dept., Crested Butte Fire Dept., Bureau of Land Management (U.S. Wildland Fire Service), Gunnison Dispatch</p>
+      </div>
+      <div class="station-item">
+        <h4>Wildfire Evacuation Planning (including Livestock) &amp; CWPP</h4>
+        <p>Gunnison Emergency Operations Center, Colorado Department of Agriculture</p>
+      </div>
+      <div class="station-item">
+        <h4>Firewise Landscaping &amp; Fire-Resistant Plants</h4>
+        <p>CSU Extension, County Cheatgrass Coordinator, Cold Harbour</p>
       </div>
     </div>
   </div>
@@ -602,11 +636,16 @@
     <h2 class="section-title">Registration Is Not Required</h2>
     <p>
       This is a free community event &mdash; just show up at the Fred Field Center
-      in Gunnison on Saturday, April 25. Doors open at 8:30 AM.
+      in Gunnison on Saturday, April 25.
     </p>
-    <div class="highlight">Saturday, April 25 &bull; 9:00 AM &ndash; 1:00 PM</div>
+    <div class="highlight">Saturday, April 25 &bull; 8:30 AM &ndash; 12:30 PM</div>
     <p style="color: #999; font-size: 0.95rem;">
       Fred Field Center &bull; Gunnison, Colorado
+    </p>
+    <p style="margin-top: 20px;">
+      <a href="https://gunnisonwildfiremitigation.org" class="btn-primary" target="_blank" rel="noopener">
+        Visit gunnisonwildfiremitigation.org
+      </a>
     </p>
     <div class="contact-info">
       Questions? Contact <strong>Tonya Carr</strong> at
@@ -620,10 +659,13 @@
   <div class="container">
     <p>
       Gunnison Wildfire Mitigation Workshop &bull;
-      Hosted by Gunnison Conservation District &amp; Colorado State University Extension Office
+      Hosted by Gunnison Conservation District &amp; Colorado State University Extension &mdash; Gunnison County
+    </p>
+    <p style="margin-top: 4px;">
+      Sponsored by the Upper Gunnison River Water Conservancy District
     </p>
     <p style="margin-top: 8px;">
-      Photos courtesy of <a href="https://pixabay.com" target="_blank" rel="noopener">Pixabay</a> and the <a href="https://www.nps.gov/subjects/fire/photo-gallery.htm" target="_blank" rel="noopener">National Park Service</a>
+      <a href="https://gunnisonwildfiremitigation.org" target="_blank" rel="noopener">gunnisonwildfiremitigation.org</a>
     </p>
   </div>
 </footer>
