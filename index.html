@@ -293,41 +293,155 @@
     }
     .raffle-section {
       margin-top: 24px;
-      padding: 24px;
+      padding: 28px 24px;
       background: linear-gradient(135deg, #fff8f0, #fff3e6);
       border-radius: 10px;
       border: 1px solid #f6a623;
     }
     .raffle-section h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #c05621;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
-    .raffle-items {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
+    .raffle-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
-    .raffle-item {
-      background: #fff;
-      border: 1px solid #f6a623;
+    .raffle-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .raffle-photo-grid .raffle-thumb {
+      position: relative;
+      cursor: pointer;
       border-radius: 8px;
-      padding: 10px 20px;
-      font-weight: 700;
-      color: #1a1a1a;
-      font-size: 0.95rem;
+      overflow: hidden;
+      background: #fff;
+      border: 2px solid #f0e6d9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      aspect-ratio: 4/3;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
+    .raffle-photo-grid .raffle-thumb:hover {
+      border-color: #f6a623;
+      box-shadow: 0 4px 16px rgba(192,86,33,0.2);
+    }
+    .raffle-photo-grid .raffle-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .raffle-photo-grid .raffle-thumb .thumb-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 20px 8px 6px;
+      text-align: center;
+    }
+    .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
+    .raffle-photo-grid .raffle-thumb .zoom-hint {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .raffle-photo-grid .raffle-thumb:hover .zoom-hint { opacity: 1; }
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: pointer;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      padding: 8px 24px;
+      border-radius: 20px;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 16px; right: 20px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10000;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
     .raffle-donors {
       text-align: center;
       font-size: 0.85rem;
       color: #666;
     }
     .raffle-donors strong { color: #1a1a1a; }
+    @media (max-width: 768px) {
+      .raffle-photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
+    }
+    @media (max-width: 480px) {
+      .raffle-photo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 2rem; }
+    }
 
     /* ── Image Break ── */
     .image-break {
@@ -642,17 +756,55 @@
 
       <div class="raffle-section">
         <h3>Raffle Prizes</h3>
-        <div class="raffle-items">
-          <div class="raffle-item">Electric Chainsaw</div>
-          <div class="raffle-item">Chaps</div>
-          <div class="raffle-item">Lopers</div>
+        <p class="raffle-subtitle">Click any prize to see it up close &mdash; attend the workshop for a chance to win!</p>
+        <div class="raffle-photo-grid">
+          <div class="raffle-thumb" onclick="openLightbox(0)">
+            <img src="assets/images/prize-chainsaw.jpg" alt="STIHL MSA 220C electric chainsaw">
+            <span class="thumb-label">STIHL MSA 220C Chainsaw</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
+          <div class="raffle-thumb" onclick="openLightbox(1)">
+            <img src="assets/images/prize-garden-pruner.jpg" alt="STIHL GTA 26 garden pruner">
+            <span class="thumb-label">STIHL GTA 26 Pruner</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
+          <div class="raffle-thumb" onclick="openLightbox(2)">
+            <img src="assets/images/prize-lopers.jpg" alt="Fiskars lopers">
+            <span class="thumb-label">Fiskars Lopers</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
+          <div class="raffle-thumb" onclick="openLightbox(3)">
+            <img src="assets/images/prize-pruning-saws.jpg" alt="Fiskars pruning saws">
+            <span class="thumb-label">Pruning Saws</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
+          <div class="raffle-thumb" onclick="openLightbox(4)">
+            <img src="assets/images/prize-pruner.jpg" alt="Fiskars pruner">
+            <span class="thumb-label">Fiskars Pruner</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
+          <div class="raffle-thumb" onclick="openLightbox(5)">
+            <img src="assets/images/prize-work-gloves.jpg" alt="Work gloves">
+            <span class="thumb-label">Work Gloves</span>
+            <span class="zoom-hint">&#x1F50D;</span>
+          </div>
         </div>
+        <p class="raffle-subtitle" style="margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #c05621;">&hellip;and more!</p>
         <p class="raffle-donors">
           Donated by <strong>CSU Extension Office</strong>,
           <strong>Colorado River Sustainability Campaign</strong>,
           <strong>Coalitions &amp; Collaboratives</strong>, and
           <strong>Apex Land Management LLC</strong>
         </p>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(event,-1)">&#8249;</button>
+        <img id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="navLightbox(event,1)">&#8250;</button>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
       </div>
 
     </div>
@@ -746,6 +898,49 @@
     </p>
   </div>
 </footer>
+
+<script>
+(function() {
+  var prizes = [
+    { src: 'assets/images/prize-chainsaw.jpg', caption: 'STIHL MSA 220C Electric Chainsaw' },
+    { src: 'assets/images/prize-garden-pruner.jpg', caption: 'STIHL GTA 26 Garden Pruner' },
+    { src: 'assets/images/prize-lopers.jpg', caption: 'Fiskars Lopers' },
+    { src: 'assets/images/prize-pruning-saws.jpg', caption: 'Fiskars Pruning Saws' },
+    { src: 'assets/images/prize-pruner.jpg', caption: 'Fiskars Pruner' },
+    { src: 'assets/images/prize-work-gloves.jpg', caption: 'Majestic Work Gloves' }
+  ];
+  var current = 0;
+  var overlay = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbCap = document.getElementById('lightbox-caption');
+
+  window.openLightbox = function(i) {
+    current = i;
+    lbImg.src = prizes[i].src;
+    lbCap.textContent = prizes[i].caption;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLightbox = function(e) {
+    if (e.target === overlay || e.currentTarget.classList.contains('lightbox-close')) {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+  window.navLightbox = function(e, dir) {
+    e.stopPropagation();
+    current = (current + dir + prizes.length) % prizes.length;
+    lbImg.src = prizes[current].src;
+    lbCap.textContent = prizes[current].caption;
+  };
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') window.navLightbox(e, -1);
+    if (e.key === 'ArrowRight') window.navLightbox(e, 1);
+  });
+})();
+</script>
 
 </body>
 </html>
