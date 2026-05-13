@@ -13,7 +13,6 @@
     gtag('config', 'G-1VDCP0CYD6');
   </script>
   <style>
-    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -25,8 +24,60 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* ── Utility ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('2026/assets/images/wildfire-smoke-plume.jpg') center/cover no-repeat;
+      filter: brightness(0.4);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 800px;
+      padding: 40px 24px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-content h1 span { color: #f6a623; }
+    .hero-content .tagline {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #c05621, #f6a623);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Upcoming Section ── */
+    .upcoming {
+      padding: 80px 0;
+      text-align: center;
+    }
     .section-label {
       text-transform: uppercase;
       letter-spacing: 3px;
@@ -42,905 +93,281 @@
       margin-bottom: 16px;
       line-height: 1.2;
     }
-
-    /* ── Navigation ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(26, 26, 26, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid #c05621;
-    }
-    nav .container {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-    }
-    nav .logo {
-      font-weight: 800; font-size: 1.1rem; color: #fff;
-      display: flex; align-items: center; gap: 8px;
-    }
-    nav .logo .flame { color: #f6a623; font-size: 1.3rem; }
-    nav ul { list-style: none; display: flex; gap: 28px; }
-    nav ul li a {
-      color: #ccc; font-size: 0.9rem; font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav ul li a:hover { color: #f6a623; }
-
-    /* ── Hero ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      background: #1a1a1a;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url('assets/images/wildfire-smoke-plume.jpg') center/cover no-repeat;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(40,10,0,0.65) 50%,
-        rgba(0,0,0,0.85) 100%
-      );
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      text-align: center;
-      padding: 120px 24px 80px;
-      max-width: 800px;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: #c05621;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-    }
-    .hero h1 span { color: #f6a623; }
-    .hero p {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto; margin-right: auto;
-    }
-    .hero-details {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
-      margin-bottom: 40px;
-    }
-    .hero-detail {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,0.9);
-      font-size: 1rem;
-    }
-    .hero-detail .icon {
-      width: 40px; height: 40px;
-      background: rgba(246,166,35,0.2);
-      border: 1px solid rgba(246,166,35,0.4);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: #c05621;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 14px 36px;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #a04518; transform: translateY(-2px); }
-
-    /* ── Event Info Bar ── */
-    .info-bar {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 40px 0;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      text-align: center;
-    }
-    .info-item .icon-circle {
-      width: 56px; height: 56px;
-      background: rgba(246,166,35,0.15);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
-      font-size: 1.5rem;
-    }
-    .info-item h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: #f6a623;
-    }
-    .info-item p { font-size: 0.9rem; color: #bbb; }
-
-    /* ── About Section ── */
-    .about {
-      padding: 100px 0;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .about-image {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      position: relative;
-    }
-    .about-image img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-    .about-text p {
+    .upcoming p {
+      max-width: 650px;
+      margin: 0 auto 16px;
+      font-size: 1.05rem;
       color: #555;
-      font-size: 1.05rem;
-      margin-bottom: 16px;
     }
-    .about-text .hosts {
-      background: #fff5eb;
-      border-left: 4px solid #c05621;
-      padding: 16px 20px;
-      border-radius: 0 8px 8px 0;
-      margin-top: 24px;
-    }
-    .about-text .hosts strong { color: #c05621; }
-
-    /* ── Schedule Section ── */
-    .schedule {
-      padding: 100px 0;
-      background: #fff;
-    }
-    .schedule-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 60px;
-    }
-    .schedule-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .schedule-item {
-      display: flex;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .schedule-item:last-child { border-bottom: none; }
-    .schedule-time {
-      flex-shrink: 0;
-      width: 110px;
+    .tbd-badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #f6a623;
+      font-size: 1rem;
       font-weight: 700;
-      color: #c05621;
-      font-size: 0.95rem;
-      padding-top: 2px;
-    }
-    .schedule-content h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-    .schedule-content p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.5;
-    }
-    .schedule-content .speaker {
-      font-style: italic;
-      color: #888;
-      font-size: 0.85rem;
-    }
-    .stations-divider {
-      background: linear-gradient(135deg, #f6a623, #c05621);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 12px 20px;
-      border-radius: 8px;
-      margin: 24px 0 8px;
-    }
-    .station-item {
-      padding: 12px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .station-item:last-child { border-bottom: none; }
-    .station-item h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 2px;
-    }
-    .station-item p {
-      font-size: 0.85rem;
-      color: #888;
-    }
-    .station-item .station-time {
-      color: #c05621;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-    .raffle-section {
-      margin-top: 24px;
-      padding: 28px 24px;
-      background: linear-gradient(135deg, #fff8f0, #fff3e6);
+      padding: 14px 36px;
       border-radius: 10px;
-      border: 1px solid #f6a623;
+      margin-top: 12px;
+      letter-spacing: 1px;
     }
-    .raffle-section h3 {
-      font-size: 1.2rem;
-      color: #c05621;
-      margin-bottom: 6px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+    .signup-note {
+      margin-top: 24px;
+      font-size: 0.95rem;
+      color: #888;
     }
-    .raffle-subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-    .raffle-photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .raffle-photo-grid .raffle-thumb {
-      position: relative;
-      cursor: pointer;
-      border-radius: 8px;
-      overflow: hidden;
+
+    /* ── Media Section (photos/videos placeholder) ── */
+    .media-section {
+      padding: 80px 0;
       background: #fff;
-      border: 2px solid #f0e6d9;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      aspect-ratio: 4/3;
-      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .raffle-photo-grid .raffle-thumb:hover {
-      border-color: #f6a623;
-      box-shadow: 0 4px 16px rgba(192,86,33,0.2);
+    .media-section .container { text-align: center; }
+    .media-placeholder {
+      margin-top: 32px;
+      padding: 60px 24px;
+      border: 2px dashed #ddd;
+      border-radius: 12px;
+      background: #faf8f5;
+      color: #aaa;
+      font-size: 1.1rem;
     }
-    .raffle-photo-grid .raffle-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .raffle-photo-grid .raffle-thumb .thumb-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 20px 8px 6px;
-      text-align: center;
-    }
-    .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
-    .raffle-photo-grid .raffle-thumb .zoom-hint {
-      position: absolute;
-      top: 8px; right: 8px;
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .raffle-photo-grid .raffle-thumb:hover .zoom-hint { opacity: 1; }
-    /* Lightbox */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      cursor: pointer;
-    }
-    .lightbox-overlay.active { display: flex; }
-    .lightbox-overlay img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-    }
-    .lightbox-caption {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      text-align: center;
-      background: rgba(0,0,0,0.6);
-      padding: 8px 24px;
-      border-radius: 20px;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 16px; right: 20px;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      background: rgba(0,0,0,0.5);
-      border: none;
-      border-radius: 50%;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10000;
-    }
-    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
-    .lightbox-nav {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #fff;
-      font-size: 2.5rem;
-      cursor: pointer;
-      background: rgba(0,0,0,0.4);
-      border: none;
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10000;
-    }
-    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
-    .lightbox-prev { left: 16px; }
-    .lightbox-next { right: 16px; }
-    .raffle-donors {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #666;
-    }
-    .raffle-donors strong { color: #1a1a1a; }
-    @media (max-width: 768px) {
-      .raffle-photo-grid { grid-template-columns: repeat(2, 1fr); }
-      .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
-    }
-    @media (max-width: 480px) {
-      .raffle-photo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-      .raffle-photo-grid .raffle-thumb-wide { grid-column: span 2; }
-      .lightbox-nav { width: 40px; height: 40px; font-size: 2rem; }
-    }
-
-    /* ── Image Break ── */
-    .image-break {
-      position: relative;
-      height: 400px;
-      overflow: hidden;
-    }
-    .image-break img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .image-break .overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(192,86,33,0.7), rgba(26,26,26,0.6));
-      display: flex; align-items: center; justify-content: center;
-    }
-    .image-break .overlay blockquote {
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 800;
-      text-align: center;
-      max-width: 600px;
-      padding: 0 24px;
-      line-height: 1.3;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    /* ── Gallery Section ── */
-    .gallery {
-      padding: 100px 0;
-    }
-    .gallery-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 50px;
-    }
-    .gallery-grid {
+    .media-placeholder p { color: #999; margin: 0 auto; }
+    .media-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+      margin-top: 32px;
     }
-    .gallery-grid img {
+    .media-grid img, .media-grid video {
       width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.3s;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
-    .gallery-grid img:hover { transform: scale(1.03); }
 
-    /* ── CTA / Registration ── */
-    .cta {
-      padding: 100px 0;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0e 100%);
+    /* ── Resources ── */
+    .resources {
+      padding: 80px 0;
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .resource-card {
+      display: block;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #f0e6d9;
+      border-radius: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .resource-card:hover {
+      border-color: #f6a623;
+      box-shadow: 0 4px 16px rgba(192,86,33,0.12);
+    }
+    .resource-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    .resource-card p {
+      font-size: 0.8rem;
+      color: #c05621;
+    }
+
+    /* ── Previous Years ── */
+    .previous-years {
+      padding: 60px 0;
       text-align: center;
     }
-    .cta .section-title { color: #fff; }
-    .cta p { color: #bbb; font-size: 1.1rem; max-width: 600px; margin: 0 auto 12px; }
-    .cta .highlight {
-      color: #f6a623;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 24px 0;
+    .year-card {
+      display: inline-block;
+      background: #fff;
+      border: 2px solid #f0e6d9;
+      border-radius: 12px;
+      padding: 24px 48px;
+      margin: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .cta .contact-info {
-      margin-top: 32px;
-      color: #999;
-      font-size: 0.95rem;
+    .year-card:hover {
+      border-color: #f6a623;
+      box-shadow: 0 4px 20px rgba(192,86,33,0.15);
     }
-    .cta .contact-info a {
-      color: #f6a623;
-      font-weight: 600;
+    .year-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 4px;
     }
-    .cta .contact-info a:hover { text-decoration: underline; }
+    .year-card p {
+      color: #888;
+      font-size: 0.9rem;
+    }
 
     /* ── Footer ── */
     footer {
-      background: #111;
-      color: #777;
+      background: #1a1a1a;
+      color: #aaa;
       text-align: center;
-      padding: 32px 0;
+      padding: 40px 24px;
       font-size: 0.85rem;
     }
     footer a { color: #f6a623; }
     footer a:hover { text-decoration: underline; }
+    footer .hosts { margin-bottom: 8px; }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      nav ul { display: none; }
-      .schedule-item { flex-direction: column; gap: 4px; }
-      .schedule-time { width: auto; }
-      .hero-details { flex-direction: column; align-items: center; gap: 16px; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .media-grid { grid-template-columns: 1fr 1fr; }
+      .resources-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 1.8rem; }
-      .section-title { font-size: 1.7rem; }
+      .hero { min-height: 70vh; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.5rem; }
+      .media-grid { grid-template-columns: 1fr; }
+      .year-card { padding: 20px 32px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── Navigation ── -->
-<nav>
-  <div class="container">
-    <div class="logo">
-      <span class="flame">&#x1F525;</span> Gunnison Wildfire Mitigation
-    </div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#topics">Schedule</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#register">Attend</a></li>
-    </ul>
-  </div>
-</nav>
-
 <!-- ── Hero ── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">Free Community Event</div>
+    <div class="hero-badge">Coming Spring 2027</div>
     <h1>Gunnison <span>Wildfire Mitigation</span> Workshop</h1>
-    <p>A half-day workshop focused on wildfire risk, mitigation strategies, and community preparedness.</p>
-    <div class="hero-details">
-      <div class="hero-detail">
-        <div class="icon">&#128197;</div>
-        <div>
-          <strong>Saturday, April 25</strong><br>
-          8:30 AM &ndash; 12:30 PM
-        </div>
-      </div>
-      <div class="hero-detail">
-        <div class="icon">&#128205;</div>
-        <div>
-          <strong>Fred Field Center</strong><br>
-          Gunnison, Colorado
-        </div>
-      </div>
-      <div class="hero-detail">
-        <div class="icon">&#9749;</div>
-        <div>
-          <strong>Check-In &amp; Coffee</strong><br>
-          8:30 AM
-        </div>
-      </div>
-    </div>
-    <a href="#register" class="btn-primary">Learn More &darr;</a>
+    <p class="tagline">
+      A free community workshop on wildfire risk, mitigation strategies, and preparedness
+      in the Gunnison Valley.
+    </p>
   </div>
 </section>
 
-<!-- ── Info Bar ── -->
-<div class="info-bar">
+<!-- ── Upcoming Workshop ── -->
+<section class="upcoming" id="upcoming">
   <div class="container">
-    <div class="info-grid">
-      <div class="info-item">
-        <div class="icon-circle">&#127793;</div>
-        <h3>Defensible Space</h3>
-        <p>Learn how to create fire-resistant zones around your property</p>
-      </div>
-      <div class="info-item">
-        <div class="icon-circle">&#128293;</div>
-        <h3>Prescribed Burns</h3>
-        <p>Understand field and pile burning practices for land management</p>
-      </div>
-      <div class="info-item">
-        <div class="icon-circle">&#127795;</div>
-        <h3>Fuels Management</h3>
-        <p>Chipping, slash disposal, and vegetation management techniques</p>
-      </div>
-      <div class="info-item">
-        <div class="icon-circle">&#128587;</div>
-        <h3>Evacuation Planning</h3>
-        <p>Community wildfire protection plans and evacuation readiness</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── About ── -->
-<section class="about" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-image">
-        <img
-          src="assets/images/colorado-landscape.jpg"
-          alt="Colorado Rocky Mountains landscape near Gunnison"
-        >
-      </div>
-      <div class="about-text">
-        <div class="section-label">About the Workshop</div>
-        <h2 class="section-title">Learn How to Help Protect Our Community</h2>
-        <p>
-          Join your neighbors and local experts for a free half-day workshop at the
-          Fred Field Center in Gunnison, Colorado. This event brings together
-          wildfire professionals, land managers, and community members to share
-          practical knowledge about reducing wildfire risk in our area.
-        </p>
-        <p>
-          Whether you're a homeowner looking to protect your property, a rancher
-          managing your land, or simply a community member who wants to be
-          prepared, this workshop has something for you.
-        </p>
-        <p>
-          No registration is required &mdash; just show up! Check-in and
-          welcome coffee at 8:30 AM, with presentations running from
-          9:00 AM to 12:30 PM.
-        </p>
-        <div class="hosts">
-          Hosted by the <strong>Gunnison Conservation District</strong> and
-          <strong>Colorado State University Extension &mdash; Gunnison County</strong>.
-          Sponsored by the <strong>Upper Gunnison River Water Conservancy District</strong>.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Schedule ── -->
-<section class="schedule" id="topics">
-  <div class="container">
-    <div class="schedule-header">
-      <div class="section-label">Event Schedule</div>
-      <h2 class="section-title">Workshop Agenda</h2>
-    </div>
-    <div class="schedule-list">
-      <div class="schedule-item">
-        <div class="schedule-time">8:30 a.m.</div>
-        <div class="schedule-content">
-          <h3>Check-In and Welcome Coffee</h3>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">9:00 a.m.</div>
-        <div class="schedule-content">
-          <h3>Opening Remarks &amp; Workshop Overview</h3>
-          <p class="speaker">Tonya Carr, GCD Representative &amp; Hannah Cranor Kersting, CSU Extension Agent</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">9:15 a.m.</div>
-        <div class="schedule-content">
-          <h3>Keynote: Why Mitigation Matters</h3>
-          <p>Wildfire risk &amp; defensible space</p>
-          <p class="speaker">Mike Tarantino</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">9:45 a.m.</div>
-        <div class="schedule-content">
-          <h3>What to Expect: Preparing for Fire on Grazing Allotments and Post-fire Rangeland Management</h3>
-          <p class="speaker">Retta Bruegger, CSU Extension Regional Specialist, Range Management | Western Region</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">10:15 a.m.</div>
-        <div class="schedule-content">
-          <h3>Q&amp;A and Transition</h3>
-        </div>
-      </div>
-
-      <div class="stations-divider">Stations &amp; Presentations &bull; 10:30 a.m. &ndash; 12:30 p.m.</div>
-
-      <div class="station-item">
-        <h4>Mitigation Benefits &amp; Wildfire Science</h4>
-        <p>Cold Harbour, High School and Middle School Students</p>
-      </div>
-      <div class="station-item">
-        <h4>Wildfire Evacuation Planning (including Livestock) &amp; CWPP</h4>
-        <p>Gunnison Emergency Operations Center, Colorado Department of Agriculture</p>
-      </div>
-      <div class="station-item">
-        <h4>Defensible Space and Fuels Management Mitigation</h4>
-        <p>West Region Wildfire Council</p>
-      </div>
-      <div class="station-item">
-        <h4>Firewise Landscaping &amp; Fire-Resistant Plants</h4>
-        <p>CSU Extension, County Cheatgrass Coordinator, Cold Harbour</p>
-      </div>
-      <div class="station-item">
-        <h4>Restrictions, Prescribed Fire (Field &amp; Pile Burning)</h4>
-        <p>Dept. of Fire Prevention and Control, Gunnison Fire Dept., Crested Butte Fire Dept., Bureau of Land Management (U.S. Wildland Fire Service), Gunnison Dispatch</p>
-      </div>
-      <div class="station-item">
-        <h4>Chipping &amp; Slash Disposal</h4>
-        <p>Colorado State Forest Service &bull; <span class="station-time">11:00 a.m. presentation</span></p>
-      </div>
-      <div class="station-item">
-        <h4>Chainsaw Safety</h4>
-        <p>United States Forest Service &bull; <span class="station-time">11:30 a.m. presentation</span></p>
-      </div>
-      <div class="station-item">
-        <h4>Gunnison County Electric Association</h4>
-        <p>GCEA</p>
-      </div>
-      <div class="station-item">
-        <h4>Colorado Wildfire Resiliency Code</h4>
-        <p>Gunnison County Community and Economic Development</p>
-      </div>
-      <div class="station-item">
-        <h4>Funding Resources for Landowners</h4>
-        <p>Natural Resources Conservation Service</p>
-      </div>
-      <div class="station-item">
-        <h4>South Rim Fire &mdash; Lessons Learned</h4>
-        <p>National Park Service</p>
-      </div>
-
-      <div class="raffle-section">
-        <h3>Raffle Prizes</h3>
-        <p class="raffle-subtitle">Click any prize to see it up close &mdash; attend the workshop for a chance to win!</p>
-        <div class="raffle-photo-grid">
-          <div class="raffle-thumb" onclick="openLightbox(0)">
-            <img src="assets/images/prize-chainsaw.jpg" alt="STIHL MSA 220C electric chainsaw">
-            <span class="thumb-label">STIHL MSA 220C Chainsaw</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-          <div class="raffle-thumb" onclick="openLightbox(1)">
-            <img src="assets/images/prize-garden-pruner.jpg" alt="STIHL GTA 26 garden pruner">
-            <span class="thumb-label">STIHL GTA 26 Pruner</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-          <div class="raffle-thumb" onclick="openLightbox(2)">
-            <img src="assets/images/prize-lopers.jpg" alt="Fiskars lopers">
-            <span class="thumb-label">Fiskars Lopers</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-          <div class="raffle-thumb" onclick="openLightbox(3)">
-            <img src="assets/images/prize-pruning-saws.jpg" alt="Fiskars pruning saws">
-            <span class="thumb-label">Pruning Saws</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-          <div class="raffle-thumb" onclick="openLightbox(4)">
-            <img src="assets/images/prize-pruner.jpg" alt="Fiskars pruner">
-            <span class="thumb-label">Fiskars Pruner</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-          <div class="raffle-thumb" onclick="openLightbox(5)">
-            <img src="assets/images/prize-work-gloves.jpg" alt="Work gloves">
-            <span class="thumb-label">Work Gloves</span>
-            <span class="zoom-hint">&#x1F50D;</span>
-          </div>
-        </div>
-        <p class="raffle-subtitle" style="margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #c05621;">&hellip;and more!</p>
-        <p class="raffle-donors">
-          Donated by <strong>CSU Extension Office</strong>,
-          <strong>Colorado River Sustainability Campaign</strong>,
-          <strong>Coalitions &amp; Collaboratives</strong>, and
-          <strong>Apex Land Management LLC</strong>
-        </p>
-      </div>
-
-      <!-- Lightbox -->
-      <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
-        <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
-        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(event,-1)">&#8249;</button>
-        <img id="lightbox-img" src="" alt="">
-        <button class="lightbox-nav lightbox-next" onclick="navLightbox(event,1)">&#8250;</button>
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Image Break ── -->
-<div class="image-break">
-  <img
-    src="assets/images/firefighter-night-forest.jpg"
-    alt="Wildland firefighter working in smoky forest at night"
-  >
-  <div class="overlay">
-    <blockquote>Learn how to help protect our community from wildfire.</blockquote>
-  </div>
-</div>
-
-<!-- ── Gallery ── -->
-<section class="gallery" id="gallery">
-  <div class="container">
-    <div class="gallery-header">
-      <div class="section-label">The Challenge We Face</div>
-      <h2 class="section-title">Wildfire in the West</h2>
-    </div>
-    <div class="gallery-grid">
-      <img
-        src="assets/images/canyon-wildfire.jpg"
-        alt="Wildfire burning through a mountain canyon"
-      >
-      <img
-        src="assets/images/colorado-rocky-mountains.jpg"
-        alt="Colorado Rocky Mountains landscape"
-      >
-      <img
-        src="assets/images/prescribed-burn-smoke.jpg"
-        alt="Prescribed burn with smoke plume in sagebrush"
-      >
-      <img
-        src="assets/images/slash-pile-burn.jpg"
-        alt="Slash pile burn in winter forest clearing"
-      >
-      <img
-        src="assets/images/gunnison-river.jpg"
-        alt="Gunnison River valley landscape"
-      >
-      <img
-        src="assets/images/mountain-valley.jpg"
-        alt="Mountain valley in the Colorado Rockies"
-      >
-    </div>
-  </div>
-</section>
-
-<!-- ── CTA / Registration ── -->
-<section class="cta" id="register">
-  <div class="container">
-    <div class="section-label" style="color: #f6a623;">Join Us</div>
-    <h2 class="section-title">Registration Is Not Required</h2>
+    <div class="section-label">Next Workshop</div>
+    <h2 class="section-title">Spring 2027</h2>
     <p>
-      This is a free community event &mdash; just show up at the Fred Field Center
-      in Gunnison on Saturday, April 25.
+      We're planning the next Gunnison Wildfire Mitigation Workshop for spring 2027.
+      Join your neighbors and local experts for a free half-day of hands-on learning
+      about reducing wildfire risk in our community.
     </p>
-    <div class="highlight">Saturday, April 25 &bull; 8:30 AM &ndash; 12:30 PM</div>
-    <p style="color: #999; font-size: 0.95rem;">
-      Fred Field Center &bull; Gunnison, Colorado
+    <p>
+      The workshop will be hosted by the <strong>Gunnison Conservation District</strong>
+      and <strong>CSU Extension &mdash; Gunnison County</strong>.
     </p>
-    <p style="margin-top: 20px;">
-      <a href="https://gunnisonwildfiremitigation.org" class="btn-primary" target="_blank" rel="noopener">
-        Visit gunnisonwildfiremitigation.org
+    <div class="tbd-badge">Date &amp; Details TBD</div>
+    <p class="signup-note">Check back here for updates as plans come together.</p>
+  </div>
+</section>
+
+<!-- ── Community Resources ── -->
+<section class="resources" id="resources">
+  <div class="container">
+    <div class="section-label">Wildfire Resources</div>
+    <h2 class="section-title">Community Resources</h2>
+    <p style="max-width: 650px; margin: 0 auto 24px; color: #555; text-align: center;">
+      Local organizations and agencies working on wildfire preparedness and mitigation in the Gunnison Valley.
+    </p>
+    <div class="resources-grid">
+      <a href="https://csfs.colostate.edu/wildfire-mitigation/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Colorado State Forest Service</h4>
+        <p>Wildfire Mitigation</p>
       </a>
-    </p>
-    <div class="contact-info">
-      Questions? Contact <strong>Tonya Carr</strong> at
-      <a href="mailto:gunnisoncd2006@gmail.com">gunnisoncd2006@gmail.com</a>
+      <a href="https://www.cowildfire.org/" class="resource-card" target="_blank" rel="noopener">
+        <h4>West Region Wildfire Council</h4>
+        <p>cowildfire.org</p>
+      </a>
+      <a href="https://gunnison.extension.colostate.edu/" class="resource-card" target="_blank" rel="noopener">
+        <h4>CSU Extension &mdash; Gunnison County</h4>
+        <p>gunnison.extension.colostate.edu</p>
+      </a>
+      <a href="https://www.gunnisonconservationdistrict.info/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison Conservation District</h4>
+        <p>gunnisonconservationdistrict.info</p>
+      </a>
+      <a href="https://gunnisoncounty.org/171/Noxious-Weed-Management-Program" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison County Cheatgrass &amp; Noxious Weeds</h4>
+        <p>Noxious Weed Management Program</p>
+      </a>
+      <a href="https://gunnisoncounty.org/1057/Wildfire-Info" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison County WUI Code</h4>
+        <p>Wildfire Resiliency Code</p>
+      </a>
+      <a href="https://www.gcea.coop/outages-safety/wildfire-mitigation/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison County Electric Association</h4>
+        <p>Wildfire Mitigation</p>
+      </a>
+      <a href="https://dfpc.colorado.gov/sections/wildland-fire-management" class="resource-card" target="_blank" rel="noopener">
+        <h4>Dept. of Fire Prevention &amp; Control</h4>
+        <p>Wildland Fire Management</p>
+      </a>
+      <a href="https://gunnisoncounty.org/145/Emergency-Management" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison Emergency Operations Center</h4>
+        <p>Regional Alerts</p>
+      </a>
+      <a href="https://www.gunnisonfire.org/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Gunnison Fire Department</h4>
+        <p>gunnisonfire.org</p>
+      </a>
+      <a href="https://cbfpd.org/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Crested Butte Fire Department</h4>
+        <p>cbfpd.org</p>
+      </a>
+      <a href="https://www.coldharbourinstitute.org/" class="resource-card" target="_blank" rel="noopener">
+        <h4>Coldharbour Institute</h4>
+        <p>coldharbourinstitute.org</p>
+      </a>
     </div>
+  </div>
+</section>
+
+<!-- ── 2026 Photos & Videos ── -->
+<section class="media-section" id="media">
+  <div class="container">
+    <div class="section-label">2026 Workshop Highlights</div>
+    <h2 class="section-title">Photos &amp; Videos</h2>
+    <div class="media-placeholder">
+      <p>Photos and videos from the 2026 workshop coming soon!</p>
+    </div>
+    <!-- When media is ready, replace the placeholder above with:
+    <div class="media-grid">
+      <img src="assets/media/photo1.jpg" alt="Description">
+      <video controls src="assets/media/video1.mp4"></video>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ── Previous Years ── -->
+<section class="previous-years" id="previous">
+  <div class="container">
+    <div class="section-label">Previous Years</div>
+    <h2 class="section-title">Past Workshops</h2>
+    <a href="2026/" class="year-card">
+      <h3>2026</h3>
+      <p>April 25 &bull; Fred Field Center, Gunnison</p>
+    </a>
   </div>
 </section>
 
 <!-- ── Footer ── -->
 <footer>
-  <div class="container">
-    <p>
-      Gunnison Wildfire Mitigation Workshop &bull;
-      Hosted by Gunnison Conservation District &amp; Colorado State University Extension &mdash; Gunnison County
-    </p>
-    <p style="margin-top: 4px;">
-      Sponsored by the Upper Gunnison River Water Conservancy District
-    </p>
-    <p style="margin-top: 8px;">
-      <a href="https://gunnisonwildfiremitigation.org" target="_blank" rel="noopener">gunnisonwildfiremitigation.org</a>
-    </p>
-  </div>
+  <p class="hosts">
+    Hosted by Gunnison Conservation District &amp; Colorado State University Extension &mdash; Gunnison County
+  </p>
+  <p>
+    <a href="https://gunnisonwildfiremitigation.org" target="_blank" rel="noopener">gunnisonwildfiremitigation.org</a>
+  </p>
 </footer>
-
-<script>
-(function() {
-  var prizes = [
-    { src: 'assets/images/prize-chainsaw.jpg', caption: 'STIHL MSA 220C Electric Chainsaw' },
-    { src: 'assets/images/prize-garden-pruner.jpg', caption: 'STIHL GTA 26 Garden Pruner' },
-    { src: 'assets/images/prize-lopers.jpg', caption: 'Fiskars Lopers' },
-    { src: 'assets/images/prize-pruning-saws.jpg', caption: 'Fiskars Pruning Saws' },
-    { src: 'assets/images/prize-pruner.jpg', caption: 'Fiskars Pruner' },
-    { src: 'assets/images/prize-work-gloves.jpg', caption: 'Majestic Work Gloves' }
-  ];
-  var current = 0;
-  var overlay = document.getElementById('lightbox');
-  var lbImg = document.getElementById('lightbox-img');
-  var lbCap = document.getElementById('lightbox-caption');
-
-  window.openLightbox = function(i) {
-    current = i;
-    lbImg.src = prizes[i].src;
-    lbCap.textContent = prizes[i].caption;
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
-  window.closeLightbox = function(e) {
-    if (e.target === overlay || e.currentTarget.classList.contains('lightbox-close')) {
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  };
-  window.navLightbox = function(e, dir) {
-    e.stopPropagation();
-    current = (current + dir + prizes.length) % prizes.length;
-    lbImg.src = prizes[current].src;
-    lbCap.textContent = prizes[current].caption;
-  };
-  document.addEventListener('keydown', function(e) {
-    if (!overlay.classList.contains('active')) return;
-    if (e.key === 'Escape') { overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    if (e.key === 'ArrowLeft') window.navLightbox(e, -1);
-    if (e.key === 'ArrowRight') window.navLightbox(e, 1);
-  });
-})();
-</script>
 
 </body>
 </html>
